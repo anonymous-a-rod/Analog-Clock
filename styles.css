@@ -90,7 +90,7 @@ body.active {
 }
 
 .clock .hand.second {
-    width: 2px;
+    width: 3px;
     height: 45%;
     background-color: red;
 }
