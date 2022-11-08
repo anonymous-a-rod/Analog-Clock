@@ -8,8 +8,6 @@ const toggle = document.getElementById('toggle');
 const body = document.querySelector('body');
 
 
-
-
 function setClock() {
     const currentDate = new Date();
     const secondsRatio = currentDate.getSeconds()/60;
@@ -26,9 +24,6 @@ function setRotation(element, rotationRatio) {
 }
 
 setClock()
-
-
-
 
 
 toggle.onclick = function () {
