@@ -1,0 +1,161 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+    background: #222;
+    --hands-color: #222;
+    --primary-color: #444;
+    --secondary-color: #222;
+    --shadow-color: #bbc1cf;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+body.active {
+    background: #fff;  
+    --hands-color: #222;
+    --primary-color: #eaeaea;
+    --secondary-color: #bbc1cf;
+}
+
+.clock {
+    width: 300px;
+    height: 300px;
+    background-color: var(--primary-color);
+    opacity: .8;
+    border-radius: 50%;
+    border: 20px solid var(--primary-color);
+    position: relative;
+    box-shadow: 10px 10px 15px var(--secondary-color) inset,
+                10px 10px 15px var(--secondary-color);
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+}
+
+@media (min-width: 800px) {
+    .clock {
+        transform: scale(1.3);
+    }
+}
+
+.clock .number {
+    --rotation: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform: rotate(var(--rotation));
+    font-size: 1.5em;
+}
+
+.clock .number1 { --rotation: 30deg;}
+.clock .number2 { --rotation: 60deg;}
+.clock .number3 { --rotation: 90deg;}
+.clock .number4 { --rotation: 120deg;}
+.clock .number5 { --rotation: 150deg;}
+.clock .number6 { --rotation: 180deg;}
+.clock .number7 { --rotation: 210deg;}
+.clock .number8 { --rotation: 240deg;}
+.clock .number9 { --rotation: 270deg;}
+.clock .number10 { --rotation: 300deg;}
+.clock .number11 { --rotation: 330deg;}
+
+.clock::after {
+    content: '';
+    position: absolute;
+    background-color: var(--hands-color);
+    z-index: 11;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.clock .hand {
+    --rotation: 0;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    width: 10px;
+    transform-origin: bottom;
+    z-index: 10;
+    transform: translateX(-50%) rotate(calc(var(--rotation)* 1deg) );
+}
+
+.clock .hand.second {
+    width: 4px;
+    height: 45%;
+    background-color: red;
+}
+
+.clock .hand.minute {
+    width: 5px;
+    height: 40%;
+    background-color: var(--hands-color);
+}
+
+.clock .hand.hour {
+    width: 8px;
+    height: 35%;
+    background-color: var(--hands-color);
+}
+
+.hand {
+    background-color: #222;
+    box-shadow: 0px 8px 60px rgba(0, 0, 0, 0.1),
+        0px 8px 8px rgba(0, 0, 0, 0.1),
+        0px -4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toggle {
+    transform: scale(25%);
+    position: absolute;
+    width: 100%;
+    bottom: 5%;  
+    width: 320px;
+    height: 160px;
+    border-radius: 160px;
+    background-color: #222;
+    box-shadow: 0px 8px 60px rgba(0 , 0, 0, 0.1),
+                0px 8px 8px rgba(0, 0, 0, 0.1),
+                0px -4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toggle.active {
+    background-color: #fff;
+    box-shadow: 0px 2px 60px rgba(0, 0, 0, 0.1),
+                0px 8px 8px rgba(0, 0, 0, 0.1),
+                0px -4px 4px rgba(0, 0, 0, 0.05);
+}
+
+.toggle .indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 160px;
+    height: 160px;
+    background: linear-gradient(to bottom, var(--primary-color), #222);
+    border-radius: 50%;
+    transform: scale(0.9);
+    z-index: 10;
+    box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.5),
+                inset 0px 4px 4px rgba(255, 255, 255, 0.2),
+                inset 0px -4px 4px rgba(255, 255, 255, 0.2);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+#toggle.active .indicator {
+    left: 160px;
+    background: linear-gradient(to bottom, #eaeaea, #f9f9f9);
+    box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.1),
+            inset 0px 4px 4px rgba(255, 255, 255, 1),
+            inset 0px -4px 4px rgba(255, 255, 255, 1);
+}
